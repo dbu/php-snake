@@ -1,0 +1,34 @@
+{
+    "name": "dbu/snake",
+    "type": "bundle",
+    "license": "MIT",
+    "description": "Snake Game (demo for the Symfony console cursor control)",
+    "authors": [
+        {
+            "name": "David Buchmann",
+            "email": "mail@davidbu.ch"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "symfony/console": "^5.1 || ^6.0"
+    }
+    ,
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Dbu\\Snake\\": "src/"
+        }
+    }
+}

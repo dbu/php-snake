@@ -1,0 +1,47 @@
+name: Create release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  release:
+    name: Create release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: composer:v2
+          coverage: none
+
+      - name: Install dependencies
+        run: composer update --prefer-dist --no-interaction --no-progress
+
+      - name: Execute tests
+        run: make dist
+
+      - name: Check if we can run the phar
+        run: ./dist/php-snake.phar --version
+
+      - name: Determine version name
+        id: get-version
+        run: echo ::set-output name=version::${GITHUB_REF#refs/tags/}
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          # This token is provided by GitHub Actions.
+          # You DO NOT need to create your own token.
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ steps.get-version.outputs.version }}
+          tag: ${{ steps.get-version.outputs.version }}
+          body: 'Stable release.'
+          artifacts: ./dist/php-snake.phar
+          artifactContentType: application/x-php

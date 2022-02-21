@@ -1,0 +1,10 @@
+{
+  "main": "bin/console",
+  "output": "dist/php-snake.phar",
+  "chmod": "0700",
+  "compression": "GZ",
+  "directories": [
+    "vendor",
+    "src"
+  ]
+}
