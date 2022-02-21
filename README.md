@@ -23,6 +23,8 @@ Let it not distract you from your work ;-)
 
 The application is provided as a stand-alone .phar file with the help of `humbug/box`.
 
+[![CI](https://github.com/dbu/php-snake/actions/workflows/ci.yaml/badge.svg)](https://github.com/dbu/php-snake/actions/workflows/ci.yaml)
+
 # Installation and Usage
                           
 ## Installation
