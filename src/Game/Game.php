@@ -75,7 +75,7 @@ class Game
             $tickDuration = self::TICK_DURATION - self::TICK_DURATION / 2 * $speedup;
             $leftover = $tickDuration - (microtime(true) - $now);
             if ($leftover > 0) {
-                usleep((int) $leftover * 1000000);
+                usleep((int) ($leftover * 1000000));
             }
         }
     }
